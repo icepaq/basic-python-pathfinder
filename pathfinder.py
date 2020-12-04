@@ -11,8 +11,8 @@ def pathfinder(position, end):
         run = end[0] - position[0]
         rise = end[1] - position[1]
 
-        angle_rad = math.atan(run / rise)
-        angle_deg = angle_rad * (180 / math.pi)
+        angle_rad = math.atan(run / rise) # Using tangent trig ratio to find angle in radians
+        angle_deg = angle_rad * (180 / math.pi) # Converting radians to degrees. Primarily for aesthetics.
 
         # print('Current Position: ' + str(position))
         # print('Angle To End: ' + str(angle_deg))
@@ -59,7 +59,9 @@ map = [
 
 start = -1
 end = -1
+walls = []  # Wall functionality will be added later on
 
+# Finding start and end coordinates in the entire array.
 for index, row in enumerate(map):
 
     for a, b in enumerate(row):
@@ -70,8 +72,14 @@ for index, row in enumerate(map):
         if b == 2:
             end = [index, a]
 
+        if b == 3:
+            walls.append(index, a)
 
-print('Start' + str(start))
-print('End' + str(end))
+if start == -1 or end == -1:
+    print('Your start (1) or finish (2) are missing from the map')
 
-pathfinder(start, end)
+else:
+    print('Start' + str(start))
+    print('End' + str(end))
+
+    pathfinder(start, end)
