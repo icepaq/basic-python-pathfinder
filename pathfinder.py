@@ -1,9 +1,3 @@
-#
-#
-# Developer: Anton
-# License: MIT
-#
-
 import math
 
 
